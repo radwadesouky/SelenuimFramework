@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Regression Suite]">
-  <parameter name="browser" value="headless"/>
-  <test thread-count="5" name="Regression Test(failed)">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [Regression Suite]" parallel="tests">
+  <test thread-count="2" name="Chrome Regression Test(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="tests.TestLoginPage">
+      <class name="tests.TestRegistrationPageParallel">
         <methods>
-          <include name="setupEnv"/>
-          <include name="testLogin"/>
-          <include name="screenshotOnFailure"/>
-          <include name="tearDownClass"/>
-          <include name="tearDown"/>
-          <include name="setUpClass"/>
+          <include name="setRegistrationInfoTest" invocation-numbers="0 1"/>
+          <include name="setUp"/>
+          <include name="stop"/>
         </methods>
-      </class> <!-- tests.TestLoginPage -->
+      </class> <!-- tests.TestRegistrationPageParallel -->
     </classes>
-  </test> <!-- Regression Test(failed) -->
+  </test> <!-- Chrome Regression Test(failed) -->
+  <test thread-count="2" name="FireFox Regression Test(failed)" parallel="tests">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="tests.TestRegistrationPageParallel">
+        <methods>
+          <include name="setRegistrationInfoTest" invocation-numbers="0 1"/>
+          <include name="setUp"/>
+          <include name="stop"/>
+        </methods>
+      </class> <!-- tests.TestRegistrationPageParallel -->
+    </classes>
+  </test> <!-- FireFox Regression Test(failed) -->
 </suite> <!-- Failed suite [Regression Suite] -->

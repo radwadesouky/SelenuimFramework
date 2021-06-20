@@ -19,7 +19,6 @@ import datahelpers.CaptureScreenshot;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 public class TestBase extends AbstractTestNGCucumberTests{
-
 	public static WebDriver driver;
 	String ChromePath = System.getProperty("user.dir") + "\\Drivers\\chromedriver.exe";
 	String fireFoxPath = System.getProperty("user.dir") + "\\Drivers\\geckodriver.exe";
